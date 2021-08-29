@@ -252,4 +252,95 @@ var numero = 1;
 
 var resultado = numero === 1 ? "Si soy un uno" : "No, no soy uno"
 ```
-## Switch
+## Arrays
+Es un tipo de estructura de datos, objetos. Puede guardar datos distintos dentro, los guarda en forma de lista.
+Los elementos del array se cuentan desde cero
+Tenemos metodos que nos ayudan a mutar/modificar nuestros arrays.
+
+* **.lenght** devuelve la longitud del array.
+* **.push()** agrega elementos al final de array
+* **.pop()** elimina un elemento del array
+* **.unshift()** agrega un elemento del array, pero lo agrega en el primer lugar
+* **.shift()** elimina el elemento que está en el inicio del array
+* **.indexOf()** devuelve la posición de un elemento del array
+## Loops: For y For...of
+Los bucles pueden ejecutar un bloque de código varias veces. JavaScript admite diferentes tipos de loops.
+* **for** recorre un bloque de código varias veces
+* **for/in** recorre las propiedades de un objeto
+* **for/of** recorre los valores de un objeto 
+* **while** recorre un bloque de código mientras se cumple una condición específica
+* **do/while** también recorre un bloque de código mientras se cumple una condición específica.
+
+## Objetos
+
+Es una representación abstracta de un objeto en la vida real, sin embargo, también puede entenderse como un contenedor de datos.
+Un ejemplo de objeto en JS es el siguiente:
+```JavaScript
+//Un objeto con tres propiedades
+var miAuto = {
+    marca: "Toyota",
+    modelo: "Corolla",
+    annio: 2020,
+    detalleDelAuto: function () {
+        console.log(`Auto ${this.modelo} ${this.annio}`);
+    }
+};
+```
+Para llamar a una propiedad del objeto seria 
+```JavaScript
+miAuto.marca //"Toyota"
+```
+Se pueden agregar propiedades que van a ser una función, se les llama métodos de objetos.
+
+**¿Quién es this?**
+Es una variable que hace referencia al objeto. En este caso: this = miAuto.
+### Función constructora
+Nos permite crear objetos de forma rapida y facil.
+```JavaScript
+function auto(marca, modelo, annio) {
+    this.marca = marca;
+    this.modelo = modelo;
+    this.annio = annio;
+}
+```
+para crear un objeto con relacion al template de la funcion construida anteriormente seria
+```JavaScript
+var autoNuevo = new auto("Tesla", "Model 3", 2020);
+var autoNuevo2 = new auto("Tesla", "Model X", 2018);
+var autoNuevo3 = new auto("Toyota", "Corolla", 2020);
+```
+## Metodos de recorridos de Arrays
+* **.filter** : nos permite filtrar solo los elementos que deseamos (según ciertos criterios) y devolverlos en un nuevo array.
+
+```JavaScript
+var autosFiltrados = listaAutos.filter(function(auto){
+    return auto.annio === 2020;
+});
+console.log(autosFiltrados);
+```
+
+* **.map** : crea un nuevo array con los resultados de la llamada a la función indicada aplicados a cada uno de sus elementos.
+```JavaScript
+var marcasRecientes = listaAutos.map(function(auto){
+    return auto.marca;
+});
+console.log(marcasRecientes);
+```
+* **foreach()** : Ejecuta lo que le definamos una vez por cada elemento de nuestro array
+```JavaScript
+listaAutos.forEach(function (auto) {
+    console.log(auto.marca);
+});
+```
+* **some()** : Comprueba si al menos un elemento del array cumple con la condición que le damos, nos da un True o False
+```JavaScript
+var autosViejos = listaAutos.some(function(auto){
+    return auto.annio <= 2018;
+});
+```
+### Diferencia entre find y filter
+**El método find ()** devuelve el primer valor que coincide de la colección. Una vez que coincida con el valor en los resultados, no verificará los valores restantes en la colección de matriz.
+
+**El método filter ()** devuelve los valores coincidentes en una matriz de la colección. Verificará todos los valores de la colección y devolverá los valores coincidentes en una matriz.
+
+
